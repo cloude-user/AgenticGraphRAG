@@ -1,0 +1,120 @@
+# Agentic Multi-Modal RAG
+
+## Overview
+
+**Agentic Multi-Modal RAG** is an advanced AI system combining Retrieval-Augmented Generation (RAG) with agentic workflows, designed to integrate multi-modal data sources such as PDFs, Confluence pages, images, and structured tables. This system intelligently decides when and how to fetch information from vector databases, knowledge graphs (Neo4j), or raw documents, then produces contextual, accurate responses using local LLMs via OllamaIndex.
+
+This project empowers developers and enterprises to build next-generation AI assistants and chatbots with:
+
+- **Multi-modal data handling:** Process text, diagrams, images, tables seamlessly
+- **Hybrid retrieval:** Search via vector embeddings + graph queries + document lookup
+- **Agent workflows:** Use LangGraph for adaptive task planning and routing
+- **Cost-free operation:** Utilizes open-source tools and local model hosting
+
+---
+
+## What is Retrieval-Augmented Generation (RAG)?
+
+RAG enhances language models by augmenting their knowledge with external documents or data. Instead of relying solely on the model's pre-trained knowledge, it retrieves relevant context dynamically, improving accuracy and relevance — essential for enterprise-scale AI assistants.
+
+---
+
+## What is Agentic AI?
+
+Agentic AI builds on RAG by adding autonomous agents that can plan, decide, and execute subtasks independently. An agent can choose the best retrieval method (graph, vector, document), update the knowledge base, or call external APIs to optimize the response.
+
+---
+
+## Project Goals
+
+- Build a **systematic pipeline** that ingests multi-modal data sources like PDFs, Confluence docs, and images
+- Create **semantic indices** using vector databases (ChromaDB or Weaviate)
+- Construct a **knowledge graph** in Neo4j linking entities and relationships from that data
+- Implement **an orchestrator (LangGraph)** to dynamically route queries to the most suitable data source
+- Use **local-language models (OllamaIndex)** for privacy-preserving, cost-free AI generation
+- Provide **developer-friendly modular code** for data ingestion, storage, querying, and LLM interaction
+- Enable **enterprise features** such as source attribution, multi-step reasoning, and traceable workflows
+
+---
+
+## How It Works
+
+1. **Data ingestion:**  
+   Data is fetched from Confluence via API, PDFs are parsed locally, images and tables are processed and converted to searchable formats.
+
+2. **Indexing:**  
+   - Textual chunks and image embeddings are stored in vector databases for fast semantic search.  
+   - Entities and their relations extracted from documents are stored in Neo4j knowledge graph.  
+   - Raw documents and metadata are kept to provide provenance.
+
+3. **Agentic Orchestration:**  
+   LangGraph acts as a workflow engine that:
+   - Analyzes user queries
+   - Selects most relevant data source (vector DB, graph, or document)
+   - Merges results if needed for comprehensive answers
+
+4. **Answer Generation:**  
+   Results from retrieval are passed to local LLMs running on OllamaIndex which generate contextual and accurate natural language responses.
+
+5. **Continuous Improvement:**  
+   Agents can update indexes, learn from interactions, and refine retrieval strategies autonomously.
+
+---
+
+## Tech Stack
+
+- **LangChain + LangGraph:** Flexible agentic workflow and LLM integration  
+- **OllamaIndex:** Local LLM hosting and prompt management  
+- **ChromaDB / Weaviate:** Open-source vector databases for semantic search  
+- **Neo4j Community Edition:** Powerful graph database for knowledge linking  
+- **Atlassian Confluence API:** Enterprise documentation integration  
+- **Python libraries:** PyPDF2, Pillow, pandas for data processing  
+
+---
+
+## Getting Started
+
+- Clone repository and install dependencies (`requirements.txt`)
+- Setup `.env` with your API keys and configurations (Confluence, OpenAI if used)
+- Run Neo4j locally or use Aura free tier
+- Start ingesting your documents and Confluence pages
+- Run orchestration and LLM querying through `main.py`
+
+---
+
+## Why This Matters
+
+Combining agentic AI with multi-modal RAG:
+- Enhances AI systems’ precision and relevance by dynamically choosing retrieval sources
+- Reduces hallucination by grounding answers in verifiable documents and graph data
+- Saves cost and ensures privacy by using local and open-source tools
+- Builds interpretable AI workflows that can integrate into enterprise ecosystems
+
+---
+
+## Future Directions
+
+- Expand multi-agent collaboration for complex workflows  
+- Support real-time data syncing from databases and live APIs  
+- Enhance multi-modal embeddings for richer contextual understanding  
+- Provide web or voice frontends for smoother human-AI interaction  
+
+---
+
+## Contributing
+
+Contributions are welcome! Please see `CONTRIBUTING.md` for guidelines.
+
+---
+
+## License
+
+Licensed under the Apache 2.0 License.
+
+---
+
+This project provides a comprehensive, practical toolkit to build scalable, agentic, multi-modal RAG AI — at zero cloud cost — empowering innovation in AI assistants and enterprise knowledge management.
+
+---
+
+*For detailed setup steps, visit the `docs/` folder or contact the maintainers.*  
